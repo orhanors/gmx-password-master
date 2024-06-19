@@ -1,0 +1,16 @@
+{
+  "name": "gmx-email",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "puppeteer": "^22.10.0"
+  }
+}
