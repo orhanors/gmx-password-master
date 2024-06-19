@@ -63,8 +63,6 @@ async function changeGmxPassword(email, currentPassword, newPassword) {
         }
         // await page.waitForNavigation();
 
-
-
         console.log('✅ ✅ Password changed successfully for email: ', email);
 
     } catch (error) {
@@ -87,7 +85,6 @@ async function processLineByLine() {
       await delay(2000);
       // Each line in the file will be successively available here as `line`.
       const [email, currentPassword, newPassword] = line.split(':');
-      
       
       if(!email && !currentPassword){
         throw new Error('Invalid email or password');
@@ -118,9 +115,10 @@ async function processLineByLine() {
       }
 
     }
+    console.log("✅ DONE PROCESSING ✅")
 }
   
-  processLineByLine();
+processLineByLine();
 
 // Usage example
 // changeGmxPassword('eliasmal2g@gmx.com', 'my1pYCqrb.', 'my1pYCqrb');
