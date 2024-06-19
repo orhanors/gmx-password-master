@@ -2,15 +2,16 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const readline = require('readline');
 const crypto = require('crypto');
+const { CONFIG } = require('./config.js');
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const CURRENT_EMAILS = './files/emails.txt';
-const NEW_EMAILS = './files/new-emails.txt';
-const ERRORS = './files/errors.txt';
+const CURRENT_EMAILS = CONFIG.EMAILS;
+const NEW_EMAILS = CONFIG.NEW_EMAILS;
+const ERRORS = CONFIG.ERRORS;
 
 async function changeGmxPassword(email, currentPassword, newPassword) {
-    const browser = await puppeteer.launch({ headless: false, dumpio: true, });
+    const browser = await puppeteer.launch({ headless: !CONFIG.OPEN_BROWSER, dumpio: true, });
     const page = await browser.newPage();
 
     try {
@@ -82,7 +83,7 @@ async function processLineByLine() {
     });
   
     for await (const line of rl) {
-      await delay(2000);
+      await delay(CONFIG.DELAY_BETWEEN_ACTIONS);
       // Each line in the file will be successively available here as `line`.
       const [email, currentPassword, newPassword] = line.split(':');
       
