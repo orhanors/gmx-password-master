@@ -115,6 +115,8 @@ async function processLineByLine() {
         //Retry here
       }
 
+      console.log("------------------------------")
+
     }
     console.log("✅ DONE PROCESSING ✅")
 }
